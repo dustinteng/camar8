@@ -1,0 +1,32 @@
+/* styles.module.css */
+
+.h1 {
+  font-size: 30px;
+}
+.container {
+  text-align: center;
+  margin-top: 50px;
+  background-color: #f7f7f7; /* Subtle white background color */
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.maklo {
+  color: purple;
+  font-size: 36px;
+}
+
+.button {
+  background-color: #3498db;
+  color: #f7f7f7;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
