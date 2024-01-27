@@ -1,8 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/styles.module.css";
-// import Switch from "./switch";
+
+// Import the mqtt library
+import mqtt from "mqtt";
+
+// MQTT broker connection options
+const mqttOptions = {
+  host: "mqtt://cee54d4adcc040da863fcdb3cb43c0df.s1.eu.hivemq.cloud",
+  port: 8883, // Default MQTT port
+  // Add more options as needed
+};
+
+// Create an MQTT client instance
+const mqttClient = mqtt.connect(mqttOptions);
 
 const toggleDoor = () => {
   console.log("Button clicked!");
@@ -10,6 +22,21 @@ const toggleDoor = () => {
 
 const Home = () => {
   const [showMaklo, setShowMaklo] = useState(false);
+
+  useEffect(() => {
+    mqttClient.subscribe("front-door-topic"); // Adjust topic as needed
+
+    // Handle incoming messages
+    mqttClient.on("message", (topic, message) => {
+      // You can perform actions based on received messages here
+      console.log(`Received message on topic ${topic}: ${message.toString()}`);
+    });
+
+    // Clean up subscriptions when the component unmounts
+    return () => {
+      mqttClient.end();
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
