@@ -24,7 +24,7 @@ const Home = () => {
   const [showMaklo, setShowMaklo] = useState(false);
 
   useEffect(() => {
-    mqttClient.subscribe("front-door-topic"); // Adjust topic as needed
+    mqttClient.subscribe("gatething28signal"); // Adjust topic as needed
 
     // Handle incoming messages
     mqttClient.on("message", (topic, message) => {
