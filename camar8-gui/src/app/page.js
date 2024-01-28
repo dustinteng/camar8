@@ -24,14 +24,16 @@ const toggleDoor = () => {
 
 const Home = () => {
   const [showMaklo, setShowMaklo] = useState(false);
+  const [lastMessage, setLastMessage] = useState("");
 
   useEffect(() => {
     mqttClient.subscribe("gatething28signal"); // Adjust topic as needed
 
     // Handle incoming messages
     mqttClient.on("message", (topic, message) => {
-      // You can perform actions based on received messages here
+      // You can perform actions based on recesetLastMessage(message.toString());ived messages here
       console.log(`Received message on topic ${topic}: ${message.toString()}`);
+      setLastMessage(message.toString());
     });
 
     // Clean up subscriptions when the component unmounts
@@ -59,6 +61,9 @@ const Home = () => {
       >
         Toggle
       </button>
+      <div>
+        <p>Last MQTT Message: {lastMessage}</p>
+      </div>
     </div>
   );
 };
