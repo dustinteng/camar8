@@ -10,6 +10,8 @@ import mqtt from "mqtt";
 const mqttOptions = {
   host: "mqtt://cee54d4adcc040da863fcdb3cb43c0df.s1.eu.hivemq.cloud",
   port: 8883, // Default MQTT port
+  username: "dustinteng12", // Replace with your HiveMQ username
+  password: "De021198112!",
   // Add more options as needed
 };
 
