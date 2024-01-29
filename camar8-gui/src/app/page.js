@@ -44,8 +44,8 @@ const Home = () => {
 
   // Function to send an MQTT message
   const sendMqttMessage = () => {
-    const messageToSend = "Hello, MQTT!"; // Adjust the message content as needed
-    mqttClient.publish("front-door-topic", messageToSend);
+    const messageToSend = "test dari vercel"; // Adjust the message content as needed
+    mqttClient.publish("gatething28signal", messageToSend);
   };
 
   return (
