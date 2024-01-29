@@ -57,8 +57,6 @@ const Home = () => {
       <button
         className={styles.button}
         onClick={() => {
-          console.log("asdf");
-
           setShowMaklo(!showMaklo);
 
           sendMqttMessage();
@@ -81,7 +79,6 @@ const Home = () => {
         Toggle
       </button>
       <div>
-        aaaa
         <p>Last MQTT Message: {lastMessage}</p>
       </div>
     </div>
