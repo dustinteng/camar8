@@ -42,13 +42,32 @@ const Home = () => {
     };
   }, []);
 
+  // Function to send an MQTT message
+  const sendMqttMessage = () => {
+    const messageToSend = "Hello, MQTT!"; // Adjust the message content as needed
+    mqttClient.publish("front-door-topic", messageToSend);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Camar 8 Dashboard</h1>
       <h3>Front Doora</h3>
 
       {showMaklo && <h1 className={styles.maklo}>MAK LOOOO</h1>}
+      <button
+        className={styles.button}
+        onClick={() => {
+          console.log("asdf");
 
+          setShowMaklo(!showMaklo);
+
+          sendMqttMessage();
+
+          toggleDoor();
+        }}
+      >
+        Toggle
+      </button>
       <button
         className={styles.button}
         onClick={() => {
