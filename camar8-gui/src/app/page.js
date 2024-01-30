@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "../styles/styles.module.css";
-import MosquittoComponent from "./mosquitto";
+// import MosquittoComponent from "./mosquitto";
 // Import the mqtt library
 import mqtt from "mqtt";
 
