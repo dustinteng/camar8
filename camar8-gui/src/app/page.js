@@ -18,6 +18,27 @@ const mqttOptions = {
 // Create an MQTT client instance
 const mqttClient = mqtt.connect(mqttOptions);
 
+// setup the callbacks
+mqttClient.on("connect", function () {
+  console.log("Connected");
+});
+
+mqttClient.on("error", function (error) {
+  console.log(error);
+});
+
+mqttClient.on("message", function (topic, message) {
+  // called each time a message is received
+  console.log("Received message:", topic, message.toString());
+});
+
+mqttClient.subscribe("gatething28signal"); // Adjust topic as needed
+
+// Function to send an MQTT message
+const sendMqttMessage = () => {
+  const messageToSend = "test dari vercel"; // Adjust the message content as needed
+  mqttClient.publish("gatething28signal", messageToSend);
+};
 const toggleDoor = () => {
   console.log("Button clicked!");
 };
@@ -42,12 +63,6 @@ const Home = () => {
     };
   }, []);
 
-  // Function to send an MQTT message
-  const sendMqttMessage = () => {
-    const messageToSend = "test dari vercel"; // Adjust the message content as needed
-    mqttClient.publish("gatething28signal", messageToSend);
-  };
-
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Camar 8 Dashboard</h1>
@@ -57,14 +72,12 @@ const Home = () => {
       <button
         className={styles.button}
         onClick={() => {
-          setShowMaklo(!showMaklo);
-
           sendMqttMessage();
 
           toggleDoor();
         }}
       >
-        pencet aku bang
+        pencet aku bangg
       </button>
       <div>
         <p>Last MQTT Message: {lastMessage}</p>
