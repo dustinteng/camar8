@@ -64,19 +64,7 @@ const Home = () => {
           toggleDoor();
         }}
       >
-        Toggle
-      </button>
-      <button
-        className={styles.button}
-        onClick={() => {
-          console.log("asdf");
-
-          setShowMaklo(!showMaklo);
-
-          toggleDoor();
-        }}
-      >
-        Toggle
+        pencet aku bang
       </button>
       <div>
         <p>Last MQTT Message: {lastMessage}</p>
