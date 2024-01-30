@@ -2,21 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "../styles/styles.module.css";
-
+import MosquittoComponent from "./mosquitto";
 // Import the mqtt library
 import mqtt from "mqtt";
 
 // MQTT broker connection options
-const mqttOptions = {
-  host: "cee54d4adcc040da863fcdb3cb43c0df.s1.eu.hivemq.cloud",
-  port: 8883,
-  protocol: "mqtts",
-  username: "dustinteng12",
-  password: "De021198112!",
+var options = {
+  // host: 'cee54d4adcc040da863fcdb3cb43c0df.s1.eu.hivemq.cloud',
+  // port: 8884,
+  // protocol: 'mqtt',
+  username: "developer",
+  password: "Developer1!",
+  rejectUnauthorized: false,
+  // protocolVersion: 5,
 };
 
 // Create an MQTT client instance
-const mqttClient = mqtt.connect(mqttOptions);
+const client = mqtt.connect(
+  "tls://cee54d4adcc040da863fcdb3cb43c0df.s1.eu.hivemq.cloud:8883",
+  options
+);
 
 // setup the callbacks
 mqttClient.on("connect", function () {
